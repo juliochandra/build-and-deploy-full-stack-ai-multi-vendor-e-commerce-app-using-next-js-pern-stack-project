@@ -12,6 +12,8 @@ const envSchema = z.object({
     .string()
     .min(1, "Clerk publishable key is required"),
   CLERK_SECRET_KEY: z.string().min(1, "Clerk secret key is required"),
+  INNGEST_EVENT_KEY: z.string().min(1, "Inngest event key is required"),
+  INNGEST_SIGNING_KEY: z.string().min(1, "Inngest signing key is required"),
 });
 
 export type Env = z.infer<typeof envSchema>;
