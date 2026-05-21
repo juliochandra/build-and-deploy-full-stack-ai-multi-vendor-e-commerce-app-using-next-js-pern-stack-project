@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # Next.js Application Service
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gocart
+    restart: always
+    ports:
+      - "3000:3000"
+    # Load environment variables from the .env file at runtime
+    env_file:
+      - .env
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+    # If using local database container (uncomment the 'db' service below),
+    # ensure 'db' is running before starting the web application:
+    # depends_on:
+    #   db:
+    #     condition: service_healthy
+
+    # Optional: Local PostgreSQL Service
+    # Uncomment this service if you want to host PostgreSQL locally on your Ubuntu server 
+    # instead of using a cloud database (like Neon DB).
+    #
+    # Note: If you uncomment this, you will need to update the DATABASE_URL in your .env file:
+    # DATABASE_URL="postgresql://postgres:yoursecurepassword@db:5432/ecommerce_db?schema=public"
+    #
+    # db:
+    #   image: postgres:15-alpine
+    #   container_name: postgres-ecommerce-db
+    #   restart: always
+    #   environment:
+    #     POSTGRES_USER: postgres
+    #     POSTGRES_PASSWORD: yoursecurepassword
+    #     POSTGRES_DB: ecommerce_db
+    #   ports:
+    #     - "5432:5432"
+    #   volumes:
+    #     - pgdata:/var/lib/postgresql/data
+    #   healthcheck:
+    #     test: ["CMD-SHELL", "pg_isready -U postgres -d ecommerce_db"]
+    #     interval: 5s
+    #     timeout: 5s
+    #     retries: 5
+
+    # volumes:
+    #   pgdata:

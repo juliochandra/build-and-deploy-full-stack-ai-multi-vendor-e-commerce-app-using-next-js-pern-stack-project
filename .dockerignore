@@ -1,0 +1,31 @@
+# Ignore dependency directories
+node_modules/
+.pnp
+.pnp.*
+
+# Ignore build outputs
+.next/
+out/
+build/
+dist/
+
+# Ignore debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Ignore version control and IDE files
+.git/
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# NOTE: Do NOT ignore the .env file if you want Docker to copy it 
+# during the build stage to bake in client-side NEXT_PUBLIC_ variables.
+# If you prefer to pass them via build args, you can add .env here.
+#.env
