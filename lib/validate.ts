@@ -8,10 +8,6 @@ export function validateData<T>(schema: ZodSchema<T>, data: unknown): T {
   const parsed = schema.safeParse(data);
 
   if (!parsed.success) {
-    console.error(
-      "❌ Validation Error:",
-      JSON.stringify(parsed.error.format(), null, 2),
-    );
     throw new Error(`Validation failed: ${parsed.error?.message || "Invalid data"}`);
   }
 

@@ -3,8 +3,10 @@ import { UserButton, useClerk, useUser } from "@clerk/nextjs";
 import { PackageIcon, Search, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import type React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import type { RootState } from "@/lib/store";
 
 // biome-ignore lint/nursery/useExplicitType: <>
 const Navbar = () => {
@@ -14,9 +16,9 @@ const Navbar = () => {
   const router = useRouter();
 
   const [search, setSearch] = useState("");
-  const cartCount = useSelector((state) => state.cart.total);
+  const cartCount = useSelector((state: RootState) => state.cart.total);
 
-  const handleSearch = (e) => {
+  const handleSearch = (e: React.SubmitEvent<HTMLFormElement>): void => {
     e.preventDefault();
     router.push(`/shop?search=${search}`);
   };
@@ -61,7 +63,10 @@ const Navbar = () => {
             >
               <ShoppingCart size={18} />
               Cart
-              <button className="-top-1 absolute left-3 size-3.5 rounded-full bg-slate-600 text-[8px] text-white">
+              <button
+                type="button"
+                className="-top-1 absolute left-3 size-3.5 rounded-full bg-slate-600 text-[8px] text-white"
+              >
                 {cartCount}
               </button>
             </Link>
@@ -77,7 +82,7 @@ const Navbar = () => {
               </UserButton>
             ) : (
               <button
-                onClick={openSignIn}
+                onClick={() => openSignIn()}
                 type="button"
                 className="rounded-full bg-indigo-500 px-8 py-2 text-white transition hover:bg-indigo-600"
               >
@@ -110,7 +115,7 @@ const Navbar = () => {
               // </UserButton>
 
               <button
-                onClick={openSignIn}
+                onClick={() => openSignIn()}
                 type="button"
                 className="rounded-full bg-indigo-500 px-8 py-2 text-white transition hover:bg-indigo-600"
               >
