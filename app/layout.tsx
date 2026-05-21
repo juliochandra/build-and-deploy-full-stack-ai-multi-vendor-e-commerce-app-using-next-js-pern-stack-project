@@ -12,7 +12,11 @@ export const metadata = {
   description: "GoCart. - Shop smarter",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <ClerkProvider>
       <html lang="en">
