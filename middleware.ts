@@ -3,6 +3,7 @@ import type { MiddlewareConfig } from "next/server";
 
 export default clerkMiddleware();
 
+
 export const config: MiddlewareConfig = {
   matcher: [
     // Skip Next.js internals and all static files, unless found in search params

@@ -1,4 +1,8 @@
+// inngest\functions.ts
+
 import { prisma } from "@/lib/prisma";
+
+
 import { inngest } from "./client";
 
 export const syncUserCreation = inngest.createFunction(
